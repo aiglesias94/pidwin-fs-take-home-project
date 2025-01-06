@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "bfcf1a87-6785-4b86-bfbd-a0b4f224f79b",
+		"name": "Pidwin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4961879"
+	},
+	"item": [
+		{
+			"name": "create bet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\":150,\r\n    \"toLucky7\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/game/bet",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"game",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the response body\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"// Check if the token exists in the response\r",
+							"if (jsonData.token) {\r",
+							"  // Set the token to an environment variable named 'authToken'\r",
+							"  pm.environment.set('authToken',jsonData.token);\r",
+							"  console.log('Token saved to environment variable');\r",
+							"} else {\r",
+							"  console.error('Token not found in the response');\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"alfredo.iglesias94@gmail.com\",\r\n    \"password\":\"Test1303\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/user/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get streaks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/game/topStreaks",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"game",
+						"topStreaks"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

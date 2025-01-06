@@ -35,3 +35,12 @@ The backend is now up and running.
 ## Frontend
 
 The frontend is your standard create-react-app, the default ReadME is provided under frontend/readme.md for reference.
+
+## Postman collections
+
+A postman collection and environment was added to the project with the requested apis
+
+A screenshot with the SocketIO configuration was added as well
+
+Demo video:
+https://youtu.be/gviwlC7BiQQ
